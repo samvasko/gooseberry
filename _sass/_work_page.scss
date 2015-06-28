@@ -1,0 +1,44 @@
+.work-container {
+    -webkit-align-items: center;
+}
+
+.work-title {
+    h1 {
+        font-weight: 600;
+        margin: 0;
+    }
+}
+
+.work-description {}
+
+.work-customer {
+    margin-top: $full-block-space;
+    display: -webkit-flex;
+    -webkit-align-items: center;
+
+    @media (#{$smaller-than-desktophd}) {
+        margin-top: $small-block-space;
+    }
+}
+
+.work-customer-text {
+
+    strong:after {
+        content: " - ";
+    }
+
+    blockquote {
+        margin: 0;
+        font-style: italic;
+        font-size: 0.8em;
+        &:before { content: "“" }
+        &:after { content: "”" }
+    }
+}
+
+
+.work-image {
+    img {
+        width: 100%;
+    }
+}
