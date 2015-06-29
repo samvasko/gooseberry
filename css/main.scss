@@ -5,15 +5,15 @@
 $link-color: #1eaedb;
 
 // Breakpoints
-$smaller-than-mobile    : "max-width: 400px" !default;
-$smaller-than-tablet    : "max-width: 750px" !default;
-$smaller-than-desktop   : "max-width: 1000px" !default;
-$smaller-than-desktophd   : "max-width: 1200px" !default;
+$bp-mobile    : "max-width: 400px" !default;
+$bp-tablet    : "max-width: 750px" !default;
+$bp-desktop   : "max-width: 1000px" !default;
+$bp-desktophd : "max-width: 1200px" !default;
 
-@media (#{$smaller-than-mobile}) {}
-@media (#{$smaller-than-tablet}) {}
-@media (#{$smaller-than-desktop}) {}
-@media (#{$smaller-than-desktophd}) {}
+@media (#{$bp-mobile}) {}
+@media (#{$bp-tablet}) {}
+@media (#{$bp-desktop}) {}
+@media (#{$bp-desktophd}) {}
 
 // Sizes
 $full-block-space: 3rem;
@@ -22,25 +22,18 @@ $small-block-space: 1.5rem;
 @mixin two-columns {
     display: -webkit-flex;
     & > * { width: 50%; }
-    @media (#{$smaller-than-tablet}) {
+    @media (#{$bp-tablet}) {
         -webkit-flex-direction: column;
-        -webkit-align-items: center;
         & > * { width: 100%; }
     }
 }
 
 @mixin std-margin($side) {
     margin-#{$side}: $full-block-space;
-    @media (#{$smaller-than-desktophd}) {
+    @media (#{$bp-desktophd}) {
         margin-#{$side}: $small-block-space;
     }
 }
-
-@import
-    "main",
-    "normalize",
-    "work_page"
-;
 
 //  Global styles
 
@@ -68,12 +61,11 @@ figure {
 .container {
     display: -webkit-flex;
     margin: auto $full-block-space;
-
-    @media (#{$smaller-than-desktophd}) {
+    @media (#{$bp-desktophd}) {
         margin: auto $small-block-space;
     }
 
-    @media (#{$smaller-than-desktop}) {
+    @media (#{$bp-desktop}) {
         -webkit-flex-direction: column;
     }
 }
@@ -81,7 +73,7 @@ figure {
 .container-single {
     max-width: 900px;
     margin: $full-block-space auto;
-    @media (#{$smaller-than-desktophd}) {
+    @media (#{$bp-desktop}) {
         margin: auto $small-block-space;
     }
 }
@@ -92,11 +84,11 @@ figure {
     max-width: 35em;
     margin-right: $full-block-space;
 
-    @media (#{$smaller-than-desktophd}) {
+    @media (#{$bp-desktophd}) {
         margin-right: $small-block-space;
     }
 
-    @media (#{$smaller-than-desktop}) {
+    @media (#{$bp-desktop}) {
         -webkit-flex: 0 0;
         margin-bottom: $small-block-space;
     }
@@ -140,7 +132,7 @@ header {
     background-color: rgba(#fff, 1);
     box-shadow: 0 5px 8px #f8f8f8;
     margin-bottom: $full-block-space;
-    @media (#{$smaller-than-desktophd}) {
+    @media (#{$bp-desktophd}) {
         margin-bottom: $small-block-space;
     }
 
@@ -173,28 +165,37 @@ header nav {
     -webkit-flex: 0 0 80px;
 }
 
-.contact-details-wrapper {
-    @include two-columns;
+.blog-articles {
+     -webkit-flex-flow: row wrap;
+     -webkit-justify-content: space-between;
 }
 
-.contact-map {
-    border: 0;
-    min-height: 300px;
-}
-
-.contact-individual {
-    @include two-columns;
-    h3 { font-weight: bold; }
-    & > section {
-        display: -webkit-flex;
-        -webkit-align-items: center;
-        @include std-margin("top")
+.blog-articles > article {
+    @include std-margin("top");
+    display: -webkit-flex;
+    width: calc(50% - #{$full-block-space});
+    @media (#{$bp-desktophd}) {
+        width: calc(50% - #{$small-block-space});
     }
-}
 
-.contact-image {
-    img {
+    @media (#{$bp-desktop}) {
         width: 100%;
+        margin-left: 0;
+    }
+
+    h2 {
+        margin-top: 0;
+    }
+    img {
+        margin-right: $small-block-space;
+        -webkit-flex: 0 0 180px;
+        height: 180px;
     }
 }
 
+@import
+    "main",
+    "normalize",
+    "work_page",
+    "contact"
+;

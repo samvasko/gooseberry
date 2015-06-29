@@ -12,21 +12,13 @@
 .work-description {}
 
 .work-customer {
-    margin-top: $full-block-space;
+    @include std-margin("top");
     display: -webkit-flex;
     -webkit-align-items: center;
-
-    @media (#{$smaller-than-desktophd}) {
-        margin-top: $small-block-space;
-    }
 }
 
 .work-customer-text {
-
-    strong:after {
-        content: " - ";
-    }
-
+    strong:after { content: " - "; }
     blockquote {
         margin: 0;
         font-style: italic;

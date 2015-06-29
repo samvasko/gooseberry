@@ -1,0 +1,24 @@
+.contact-details-wrapper {
+    @include two-columns;
+}
+
+.contact-map {
+    border: 0;
+    min-height: 300px;
+}
+
+.contact-individual {
+    @include two-columns;
+    h3 { font-weight: bold; }
+    & > section {
+        display: -webkit-flex;
+        -webkit-align-items: center;
+        @include std-margin("top")
+    }
+}
+
+.contact-image {
+    img {
+        width: 100%;
+    }
+}
