@@ -3,30 +3,26 @@ layout: default
 ---
 
 <section class="container work-container">
-    <div class="container-side work-description">
-        <hgroup class="work-title">
-            <h1>SSF Logo design</h1>
-            <h4>Blah blahblah</h4>
-        </hgroup>
-        <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </p>
-        <section class="work-customer">
-            <img class="avatar" src="http://placehold.it/100x100">
-            <div class="work-customer-text">
-                <h3><strong>Samuel Vasko</strong>Student</h3>
-                <blockquote>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud</blockquote>
-            </div>
-        </section>
-    </div>
-    <aside class="work-image">
-        <img src="http://placehold.it/1000x600">
-    </aside>
+    {% for work in site.works %}
+    <article>
+        <div class="container-side work-description">
+            <hgroup class="work-title">
+                <h1>{{ work.title }}</h1>
+                <h4>{{ work.subtitle }}</h4>
+            </hgroup>
+            <p>{{ work.description }}</p>
+            <section class="work-customer">
+                <img class="avatar" src="{{ work.testimony_image }}">
+                <div class="work-customer-text">
+                    <h3>{{ work.testimony_name }}</h3>
+                    <blockquote>{{ work.testimony_text }}</blockquote>
+                </div>
+            </section>
+        </div>
+        <figure class="work-image">
+            <img src="{{ work.title_image }}">
+            <figcaption>{{ work.title_caption }}</figcaption>
+        </figure>
+    </article>
+    {% endfor %}
 </section>

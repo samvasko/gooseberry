@@ -1,4 +1,5 @@
-.work-container {
+.work-container > article {
+    display: -webkit-flex;
     -webkit-align-items: center;
 }
 

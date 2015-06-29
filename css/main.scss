@@ -170,6 +170,11 @@ header nav {
      -webkit-justify-content: space-between;
 }
 
+time {
+    font-size: small;
+    color: #777;
+}
+
 .blog-articles > article {
     @include std-margin("top");
     display: -webkit-flex;

@@ -11,37 +11,14 @@ layout: default
 </section>
 
 <section class="container blog-articles">
+    {% for post in site.posts %}
     <article>
-        <img src="http://placehold.it/180x180">
+        <img src="{{ post.thumbnail }}">
         <div>
-            <h2>Hello hello hello</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat.</p>
-            <time></time>
+            <h2>{{ post.title }}</h2>
+            <p>{{ post.excerpt }}</p>
+            <time>{{ post.date | date: "%-d %B %Y" }}</time>
         </div>
     </article>
-    <article>
-        <img src="http://placehold.it/180x180">
-        <div>
-            <h2>Hello hello hello</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat.</p>
-            <time></time>
-        </div>
-    </article>
-    <article>
-        <img src="http://placehold.it/180x180">
-        <div>
-            <h2>Hello hello hello</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat.</p>
-            <time></time>
-        </div>
-    </article>
+    {% endfor %}
 </section>

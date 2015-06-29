@@ -12,3 +12,9 @@ github_username:  jekyll
 
 # Build settings
 markdown: kramdown
+
+# Collection of items
+collections:
+  works:
+    output: true
+    permalink: /works/:path/
