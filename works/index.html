@@ -2,25 +2,34 @@
 layout: default
 ---
 
+
+<section class="container-single">
+    Hello
+</section>
+
 <section class="container work-container">
     {% for work in site.works %}
     <article>
         <div class="container-side work-description">
             <hgroup class="work-title">
                 <h1>{{ work.title }}</h1>
-                <h4>{{ work.subtitle }}</h4>
+                <h2>{{ work.subtitle }}</h2>
             </hgroup>
             <p>{{ work.description }}</p>
+            {% if work.testimony_name %}
             <section class="work-customer">
-                <img class="avatar" src="{{ work.testimony_image }}">
+                {% if work.testimony_image %}
+                <img class="avatar" src="/assets/{{ work.testimony_image }}">
+                {% endif %}
                 <div class="work-customer-text">
                     <h3>{{ work.testimony_name }}</h3>
                     <blockquote>{{ work.testimony_text }}</blockquote>
                 </div>
             </section>
+            {% endif %}
         </div>
         <figure class="work-image">
-            <img src="{{ work.title_image }}">
+            <img src="/assets/{{ work.title_image }}">
             <figcaption>{{ work.title_caption }}</figcaption>
         </figure>
     </article>

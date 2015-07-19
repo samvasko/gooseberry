@@ -1,13 +1,14 @@
 .work-container > article {
     display: -webkit-flex;
     -webkit-align-items: center;
+    margin-bottom: 2*$full-block-space;
+    @media (#{$bp-desktop}) {
+        -webkit-flex-direction: column;
+    }
 }
 
 .work-title {
-    h1 {
-        font-weight: 600;
-        margin: 0;
-    }
+    h1 { margin: 0; }
 }
 
 .work-description {}
