@@ -2,14 +2,20 @@
 ---
 @charset "utf-8";
 @import "normalize";
+@import "bourbon/bourbon";
 
 $link-color: #1eaedb;
+// TODO: Fallback
+$serif: "Lora";
+$sans-serif: "Open Sans";
+$reading-width: 45rem;
 
 // breakpoints
-$bp-mobile    : "max-width: 400px" !default;
-$bp-tablet    : "max-width: 750px" !default;
-$bp-desktop   : "max-width: 1000px" !default;
-$bp-desktophd : "max-width: 1200px" !default;
+$bp-mobile:       "max-width: 400px";
+$bp-small-tablet: "max-width: 600px";
+$bp-tablet:       "max-width: 750px";
+$bp-desktop:      "max-width: 1000px";
+$bp-desktophd:    "max-width: 1200px";
 
 @media (#{$bp-mobile}) {}
 @media (#{$bp-tablet}) {}
@@ -21,17 +27,34 @@ $full-block-space: 3rem;
 $small-block-space: 1.5rem;
 
 @mixin two-columns {
-    display: -webkit-flex;
-    -webkit-justify-content: space-between;
-    & > * { width: calc(50% - #{$full-block-space}/2);}
-
-    @media (#{$bp-desktophd}) {
-        & > * { width: calc(50% - #{$small-block-space}/2);}
-    }
+    margin-top: $full-block-space;
+    @include display(flex);
+    @include justify-content(space-between);
 
     @media (#{$bp-tablet}) {
-        -webkit-flex-direction: column;
-        & > * { width: 100%; margin-left: 0 !important; }
+        @include flex-direction(column);
+    }
+
+    & > * {
+        width: calc(50% - #{$full-block-space}/2);
+        @media (#{$bp-desktophd}) {
+            width: calc(50% - #{$small-block-space}/2);
+        }
+
+        @media (#{$bp-tablet}) {
+            width: 100%;
+            margin-left: 0 !important;
+        }
+    }
+
+    &:nth-child(2n) {
+       @media (#{$bp-tablet}) {
+           margin-top: $full-block-space;
+       }
+
+       @media (#{$bp-mobile}) {
+           margin-top: $small-block-space;
+       }
     }
 }
 
@@ -46,8 +69,7 @@ $small-block-space: 1.5rem;
 
 html {
     color: #222;
-    font-size: 1em;
-    font-family: "open sans", sans-serif;
+    font: { size: 1em; family: $sans-serif; }
     line-height: 1.4;
 }
 
@@ -72,21 +94,22 @@ figure {
     }
 
     @media (#{$bp-desktop}) {
-        -webkit-flex-direction: column;
+        @include flex-direction(column);
     }
 }
 
 .container-single {
+    @include std-margin('bottom');
     max-width: 1000px;
     margin-top: $full-block-space;
-    @include std-margin("bottom");
-    padding: 0 $small-block-space;
-    margin-left: auto;
     margin-right: auto;
+    margin-left: auto;
+    padding: 0 $small-block-space;
 }
 
+
 .container-side {
-    -webkit-flex: 0 0 27rem;
+    @include flex(0 0 27rem);
     height: 100%;
     max-width: 35em;
     margin-right: $full-block-space;
@@ -96,7 +119,7 @@ figure {
     }
 
     @media (#{$bp-desktop}) {
-        -webkit-flex: 0 0;
+        @include flex(0 0);
         margin-right: 0;
         margin-bottom: $small-block-space;
     }
@@ -105,24 +128,23 @@ figure {
 a {
   color: $link-color;
   text-decoration: none;
-  &:hover { color: darken($link-color, 5%); text-decoration: underline; }
+  &:hover { color: darken($link-color, 5%); text-decoration: underline;}
 }
 
 p {
-    font-size: 0.9rem;
-    hyphens: auto;
-    -webkit-hyphens: auto;
-    font-family: "lora";
+    @include hyphens(auto);
+    font: { size: 0.9rem; family: "lora"; }
+}
+
+p:first-child {
+    margin-top: 0;
 }
 
 figcaption {
-    font-style: italic;
-    font-size: 0.8em;
+    padding: .5em;
     color: #888;
-    padding: 0.5em;
-    &:before {
-        content: "- "
-    }
+    font: { size: .8em; style: italic; }
+    &:before { content: '- '; }
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -131,10 +153,8 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
     text-transform: uppercase;
-    em {
-        color: indianred;
-        font-style: normal;
-    }
+    margin: 0;
+    em { color: indianred; font-style: normal; }
 }
 
 h2 {
@@ -156,31 +176,52 @@ h4 {
 
 .header-logo {
     width: 190px;
+    height: 119px;
 }
 
-header {
-    display: -webkit-flex;
-    -webkit-justify-content: space-between;
-    -webkit-align-items: center;
+.top-header {
+    @include display(flex);
+    @include justify-content(space-between);
+    @include align-items(center);
+    @media (#{$bp-small-tablet}) {
+        @include flex-direction(column);
+    }
+
 }
 
-header nav {
+.top-header nav {
     text-align: right;
     width: 100%;
+    @media (#{$bp-small-tablet}) {
+        text-align: center;
+        margin-top: $small-block-space;
+    }
     a {
-        color: #444;
-        text-decoration: none;
-        text-transform: uppercase;
-        font-size: 0.85em;
-        font-weight: 600;
-        transition: all 0.2s;
+        @include transition (color .2s);
+        display: inline-block;
         padding: 4px 0;
         position: relative;
+        color: #444;
+        text-transform: uppercase;
+        font: { size: 0.85rem; weight: 600; }
+        white-space: nowrap;
+        @media (#{$bp-small-tablet}) {
+            margin-top: 0.5em;
+        }
+        @media (#{$bp-small-tablet}) {
+            text-align: center;
+            margin-top: $small-block-space;
+            font-size: 1rem;
+        }
+
         &:nth-child(n+2) {
             margin-left: 3em;
+            @media (#{$bp-tablet}) { margin-left: 1em; }
         }
 
         &:after, &:before {
+            @include transition-property(width, left, top, background-color);
+            @include transition-duration(.2s);
             content: "" ;
             display: inline-block;
             position: absolute;
@@ -188,13 +229,12 @@ header nav {
             left: 0px;
             height: 1px;
             width: 100%;
-            transition: all 0.2s;
             background-color: #999;
         }
 
         &:before {
-           top: 14px;
-           opacity: 0;
+            top: 14px;
+            opacity: 0;
         }
 
         &:hover {
@@ -202,7 +242,7 @@ header nav {
             text-decoration: none;
 
             &:after, &:before {
-                width: calc(100% + 12px);
+                @include calc(width, '100% + 12px' );
                 left: -6px;
                 background-color: #ccc;
             }
@@ -212,63 +252,95 @@ header nav {
                 top: 0;
             }
         }
-
-        // &:hover {
-        //     padding: 4px 4px;
-        //     border-color: #ccc;
-        //     color: #777
-        // }
     }
 }
 
 .avatar {
-    border-radius: 50%;
+    @include flex(0 0 80px);
     height: 80px;
-    padding: 0 1rem;
-    -webkit-flex: 0 0 80px;
+    margin-right: 1rem;
+    border-radius: 50%;
 }
 
 .blog-articles {
-     -webkit-flex-flow: row wrap;
-     -webkit-justify-content: space-between;
+    @include two-columns;
+    a {
+        text-decoration: none;
+        color: #333;
+        margin-top: $full-block-space;
+        display: -webkit-flex;
+        transition: 0.2s color;
+
+        @media (#{$bp-desktop}) {
+            width: 100%;
+            margin-left: 0;
+        }
+
+        &:hover {
+            color: #777;
+            img {}
+        }
+
+        h3 {
+            font-weight: bold;
+            font-size: 1.4rem;
+            font-style: normal;
+            font-family: $sans-serif;
+        }
+        img {
+            margin-right: $small-block-space;
+            // transition: 0.2s opacity;
+            opacity: 1;
+            -webkit-flex: 0 0 180px;
+            height: 180px;
+        }
+
+        time, .author {
+            font-size: small;
+            color: #777;
+            em { color: indianred; }
+        }
+    }
 }
 
-time {
-    font-size: small;
-    color: #777;
+.blog-introduction {
+    max-width: $reading-width;
 }
 
-.blog-articles > a {
-    text-decoration: none;
-    color: #333;
-    margin-top: $full-block-space;
-    display: -webkit-flex;
-    transition: 0.2s color;
+.post-image {
+    max-width: 100%;
+}
 
-    @media (#{$bp-desktop}) {
-        width: 100%;
-        margin-left: 0;
-    }
+.post-header {
+    text-align: center;
+    h1 { margin-top: 3rem; }
+    h2 { margin-bottom: 3rem; }
+}
 
-    &:hover {
-        color: #777;
-        img {}
+.post-content {
+    max-width: $reading-width;
+    margin: 0 auto;
+    p {
+        font-size: 1em;
+        line-height: 1.45em;
     }
+}
 
-    h2 {
-        margin-top: 0;
+.highlight {
+    padding: 1.5rem;
+    background-color: #f3faff;
+    pre {
+        margin: 0;
     }
-    img {
-        margin-right: $small-block-space;
-        // transition: 0.2s opacity;
-        opacity: 1;
-        -webkit-flex: 0 0 180px;
-        height: 180px;
-    }
+}
+
+.author-header {
+    @include display(flex);
+    @include justify-content(center);
 }
 
 @import
-    "main",
     "work_page",
-    "contact"
+    "contact",
+    "highlight"
 ;

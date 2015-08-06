@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: default
 
 title: Undgomscafė <em>&</em> SFF Event
 subtitle: Promotional Material

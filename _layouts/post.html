@@ -1,15 +1,20 @@
 ---
 layout: default
 ---
-<div class="post">
+<div class="container-single post-container">
+    <hgroup class="post-header">
+        <img src="/assets/{{ page.image }}" class="post-image">
+        <h1>{{ page.title }}</h1>
+        {% debug %}
+        <h2>{{ page.date | date: "%b %-d, %Y" }}&nbsp;&nbsp;•&nbsp;&nbsp;by
+            {% assign author = (site.authors | where: "name", page.author).[0] %}
+            {% assign author = author.[0] %}
+            <a href="{{ author.url }}">{{ page.author }}</a>
+        </h2>
+    </hgroup>
 
-  <header class="post-header">
-    <h1 class="post-title">{{ page.title }}</h1>
-    <p class="post-meta">{{ page.date | date: "%b %-d, %Y" }}{% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}</p>
-  </header>
-
-  <article class="post-content">
-    {{ content }}
-  </article>
+    <article class="post-content">
+        {{ content }}
+    </article>
 
 </div>

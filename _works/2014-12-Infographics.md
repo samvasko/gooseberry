@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: default
 
 title: Infographics
 subtitle: Design & Data Analysis

@@ -1,6 +1,6 @@
 .work-container > article {
-    display: -webkit-flex;
-    -webkit-align-items: center;
+    @include display(flex);
+    @include align-items(center);
     margin-bottom: 2*$full-block-space;
     @media (#{$bp-desktop}) {
         -webkit-flex-direction: column;
@@ -12,11 +12,14 @@
 }
 
 .work-description {}
+.work-learn-more {
+    font-weight: bold;
+}
 
 .work-customer {
     @include std-margin("top");
-    display: -webkit-flex;
-    -webkit-align-items: center;
+    @include display(flex);
+    @include align-items(center);
 }
 
 .work-customer-text {
@@ -29,7 +32,6 @@
         &:after { content: "”" }
     }
 }
-
 
 .work-image {
     img {

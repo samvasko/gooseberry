@@ -1,13 +1,12 @@
-.contact-container {
-    h1 {
-        text-align: center;
-        margin-bottom: $full-block-space;
-    }
+
+.contact-heading {
+    text-align: center;
+    margin: $full-block-space .5em;
 }
 
 .contact-information {
     @include two-columns;
-    -webkit-align-items: center;
+    @include align-items(center);
 }
 
 .contact-map {
@@ -16,12 +15,33 @@
 
 .contact-individual {
     @include two-columns;
-    h3 { font-weight: bold; }
-    div { font-size: 0.9rem; }
-    & > section {
-        display: -webkit-flex;
-        -webkit-align-items: center;
-        margin-top: $full-block-space;
+    h3 {
+        font-weight: bold;
+        @media (#{$bp-mobile}) {
+            margin-top: .5em;
+            text-align: center;
+        }
+    }
+
+    p {
+        margin: 0;
+        @media (#{$bp-mobile}) {
+            text-align: center;
+        }
+    }
+
+    section {
+        @include display(flex);
+        @include align-items(center);
+        @media (#{$bp-mobile}) {
+            @include flex-direction(column);
+        }
+    }
+
+    @media (#{$bp-mobile}) {
+        .avatar {
+            margin: 0;
+        }
     }
 }
 

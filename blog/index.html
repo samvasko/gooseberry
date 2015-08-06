@@ -12,12 +12,13 @@ layout: default
 
 <section class="container blog-articles">
     {% for post in site.posts %}
-    <a href="#">
+    <a href="{{ post.url }}">
         <img src="/assets/{{ post.thumbnail }}">
         <div>
-            <h2>{{ post.title }}</h2>
+            <h3>{{ post.title }}</h3>
             <p>{{ post.excerpt }}</p>
             <time>{{ post.date | date: "%-d %B %Y" }}</time>
+            <span class="author"><em>by</em> {{ post.author }}</span>
         </div>
     </a>
     {% endfor %}

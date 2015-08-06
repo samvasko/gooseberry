@@ -5,12 +5,23 @@
 
   <body>
 
-    {% include header.html %}
+    <header class="container-single top-header">
+      <a href="/"><img class="header-logo" src="/assets/logo.svg"></a>
+      <nav >
+        <a href="/">Home</a>
+        <a href="/works">Our works</a>
+        <a href="/blog">Blog</a>
+        <a href="/contact">Get in touch</a>
+      </nav>
+    </header>
+
       <main>
         {{ content }}
       </main>
 
-    {% include footer.html %}
+    <footer>
+
+    </footer>
 
   </body>
 

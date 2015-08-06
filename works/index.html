@@ -2,13 +2,12 @@
 layout: default
 ---
 
-
 <section class="container-single">
     Hello
 </section>
 
 <section class="container work-container">
-    {% for work in site.works %}
+    {% for work in site.works reversed %}
     <article>
         <div class="container-side work-description">
             <hgroup class="work-title">
@@ -16,6 +15,9 @@ layout: default
                 <h2>{{ work.subtitle }}</h2>
             </hgroup>
             <p>{{ work.description }}</p>
+            {% if work.is_there_more %}
+                <p><a class="work-learn-more" href="{{ work.url }}">Find out more about this project</a></p>
+            {% endif %}
             {% if work.testimony_name %}
             <section class="work-customer">
                 {% if work.testimony_image %}

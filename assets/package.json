@@ -1,0 +1,11 @@
+{
+  "name": "gooseberry",
+  "version": "1.0.0",
+  "description": "Gooseberry creative website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Samuel Vasko",
+  "license": "MIT"
+}
