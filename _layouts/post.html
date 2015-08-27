@@ -5,7 +5,6 @@ layout: default
     <hgroup class="post-header">
         <img src="/assets/{{ page.image }}" class="post-image">
         <h1>{{ page.title }}</h1>
-        {% debug %}
         <h2>{{ page.date | date: "%b %-d, %Y" }}&nbsp;&nbsp;•&nbsp;&nbsp;by
             {% assign author = (site.authors | where: "name", page.author).[0] %}
             {% assign author = author.[0] %}
