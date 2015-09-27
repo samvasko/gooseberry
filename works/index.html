@@ -2,38 +2,13 @@
 layout: default
 ---
 
-<section class="container-single">
-    Hello
-</section>
-
-<section class="container work-container">
+<section class="container-wider work-container">
     {% for work in site.works reversed %}
-    <article>
-        <div class="container-side work-description">
-            <hgroup class="work-title">
-                <h1>{{ work.title }}</h1>
-                <h2>{{ work.subtitle }}</h2>
-            </hgroup>
-            <p>{{ work.description }}</p>
-            {% if work.is_there_more %}
-                <p><a class="work-learn-more" href="{{ work.url }}">Find out more about this project</a></p>
-            {% endif %}
-            {% if work.testimony_name %}
-            <section class="work-customer">
-                {% if work.testimony_image %}
-                <img class="avatar" src="/assets/{{ work.testimony_image }}">
-                {% endif %}
-                <div class="work-customer-text">
-                    <h3>{{ work.testimony_name }}</h3>
-                    <blockquote>{{ work.testimony_text }}</blockquote>
-                </div>
-            </section>
-            {% endif %}
-        </div>
-        <figure class="work-image">
-            <img src="/assets/{{ work.title_image }}">
-            <figcaption>{{ work.title_caption }}</figcaption>
-        </figure>
-    </article>
+        <a class="work-item" href="{{ work.url }}#header">
+            <img src="/assets/{{ work.image }}">
+            <h2>{{ work.subtitle }}</h2>
+            <h1>{{ work.title }}</h1>
+            <small>see more</small>
+        </a>
     {% endfor %}
 </section>

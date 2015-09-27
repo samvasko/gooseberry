@@ -69,6 +69,7 @@ $small-block-space: 1.5rem;
 
 html {
     color: #222;
+    background-image: url("/assets/bg.jpg");
     font: { size: 1em; family: $sans-serif; }
     line-height: 1.4;
 }
@@ -84,8 +85,17 @@ html {
 }
 
 figure {
-    margin: 0;
+    margin: 0 0 1.1em 0;
 }
+
+figcaption {
+    padding: 0 .3em;
+    color: #888;
+    text-align: left;
+    font: { size: .8em; style: italic; }
+    &:before { content: '- '; }
+}
+
 
 .container {
     margin: auto $full-block-space;
@@ -101,10 +111,13 @@ figure {
 .container-single {
     @include std-margin('bottom');
     max-width: 1000px;
-    margin-top: $full-block-space;
-    margin-right: auto;
-    margin-left: auto;
+    margin: $full-block-space auto 0 auto;
     padding: 0 $small-block-space;
+}
+
+.container-wider {
+    @extend .container-single;
+    max-width: 1200px;
 }
 
 
@@ -138,13 +151,6 @@ p {
 
 p:first-child {
     margin-top: 0;
-}
-
-figcaption {
-    padding: .5em;
-    color: #888;
-    font: { size: .8em; style: italic; }
-    &:before { content: '- '; }
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -255,6 +261,12 @@ h4 {
     }
 }
 
+.home-image {
+    max-width: 80%;
+    display: block;
+    margin: 0 auto;
+}
+
 .avatar {
     @include flex(0 0 80px);
     height: 80px;
@@ -318,11 +330,45 @@ h4 {
 }
 
 .post-content {
-    max-width: $reading-width;
-    margin: 0 auto;
     p {
         font-size: 1em;
+        margin-left: auto;
+        margin-right: auto;
         line-height: 1.45em;
+        max-width: $reading-width;
+    }
+
+    h2 {
+        text-align: center;
+        font-weight: bold;
+        font-family: $sans-serif;
+        font-style: normal;
+        font-size: 1.4em;
+        margin: 2em;
+    }
+
+    figure.figure-side {
+        float: right;
+        padding-left: 1.5em;
+    }
+
+    figure.figure-smaller {
+        text-align: center;
+        img {max-width: $reading-width}
+        width: 100%;
+    }
+
+    figure.figure-triplets {
+        @include display(flex);
+        @include justify-content(space-between);
+        @include flex-wrap(wrap);
+        img {
+            width: 32%;
+        }
+    }
+
+    figure img {
+        max-width: 100%;
     }
 }
 
@@ -337,6 +383,25 @@ h4 {
 .author-header {
     @include display(flex);
     @include justify-content(center);
+}
+
+footer {
+    font-size: 0.75em;
+    text-align: center;
+    padding: 1em;
+    margin-top: 3rem;
+    color: #ccc;
+
+}
+
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
 }
 
 @import

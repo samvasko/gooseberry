@@ -1,0 +1,24 @@
+---
+layout: default
+---
+<header class="author-header">
+    <img class="avatar" src="/assets/{{ page.image }}">
+    <hgroup>
+        <h1>{{ page.full_name }}</h1>
+        <h2>My blogs</h2>
+    </hgroup>
+</header>
+
+{% assign posts = (site.posts | where: "author", page.name) %}
+<section class="container blog-articles">
+    {% for post in posts %}
+    <a href="{{ post.url }}">
+        <img src="/assets/{{ post.thumbnail }}">
+        <div>
+            <h2>{{ post.title }}</h2>
+            <p>{{ post.excerpt | markdownify    }}</p>
+            <time>{{ post.date | date: "%-d %B %Y" }}</time>
+        </div>
+    </a>
+    {% endfor %}
+</section>
