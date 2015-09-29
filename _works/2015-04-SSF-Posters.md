@@ -7,15 +7,15 @@ image: ucafe-logo.png
 caption: Final logo concept - Currently being used for all promotional purpouses
 ---
 
-Sønderborg Student Foundation creates a friendly environment for students of Sønderborg. Ungdomscafé offers a platform to meet, create and relax. Both deserve representative and eye-catching graphical presence.
+Sønderborg Student Foundation creates a friendly environment for students of Sønderborg. Ungdomscafé offers a physical platform to meet, create and relax. Both deserve representative and eye-catching graphical presence.
 
-## We created beautiful and practical stationery
+## We created beautiful and practical stationery for official purposes:
 
 <figure class="figure-smaller">
     <img src="/assets/SSF/SSF-stationery.jpg">
 </figure>
 
-## Some posters that we created for events
+## We regularly design posters to promote the biggest events of the organization:
 
 <figure class="figure-triplets">
     <img src="/assets/SSF/blastoff.jpg">
@@ -29,7 +29,7 @@ Sønderborg Student Foundation creates a friendly environment for students of S�
     <img src="/assets/SSF/jobfaire.jpg">
 </figure>
 
-## To complement the posters or the promote smaller events we crafter mutltple Facebook covers
+## To complement the posters or to promote smaller events, we crafte Facebook covers:
 
 <figure class="figure-smaller">
     <img src="/assets/SSF/cover-pics.jpg">
