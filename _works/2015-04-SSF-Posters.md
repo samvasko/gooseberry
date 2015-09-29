@@ -29,7 +29,7 @@ SÃ¸nderborg Student Foundation creates a friendly environment for students of SÃ
     <img src="/assets/SSF/jobfaire.jpg">
 </figure>
 
-## To complement the posters or to promote smaller events, we crafte Facebook covers:
+## To complement the posters or to promote smaller events, we craft Facebook covers:
 
 <figure class="figure-smaller">
     <img src="/assets/SSF/cover-pics.jpg">
